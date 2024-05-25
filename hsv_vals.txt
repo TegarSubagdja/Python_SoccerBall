@@ -1,0 +1,8 @@
+hsvVals = {
+    'hmin': 40,
+    'smin': 130,
+    'vmin': 44,
+    'hmax': 83,
+    'smax': 255,
+    'vmax': 255,
+}
