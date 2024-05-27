@@ -33,8 +33,8 @@ void serveJpg() {
     server.send(503, "", "");
     return;
   }
-  Serial.printf("CAPTURE OK %dx%d %db\n", frame->getWidth(), frame->getHeight(),
-                static_cast<int>(frame->size()));
+  // Serial.printf("CAPTURE OK %dx%d %db\n", frame->getWidth(), frame->getHeight(),
+  //               static_cast<int>(frame->size()));
 
   server.setContentLength(frame->size());
   server.send(200, "image/jpeg");
@@ -62,7 +62,7 @@ void setup() {
     cfg.setJpeg(90);
 
     bool ok = Camera.begin(cfg);
-    Serial.println(ok ? "CAMERA OK" : "CAMERA FAIL");
+    // Serial.println(ok ? "CAMERA OK" : "CAMERA FAIL");
   }
 
   // Menginisialisasi koneksi WiFi dengan alamat IP statis

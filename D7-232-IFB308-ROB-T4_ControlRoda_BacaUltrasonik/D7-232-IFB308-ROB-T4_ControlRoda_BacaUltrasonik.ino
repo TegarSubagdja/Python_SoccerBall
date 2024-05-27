@@ -11,6 +11,8 @@ int move;
 
 bool ballStatus = false;
 
+int distance;
+
 const int trigPin = 11;
 const int echoPin = 12;
 
@@ -36,17 +38,17 @@ void setup() {
 void loop() {
   if (ballStatus) {
     Serial.println("Shooting");
-  } else if (checkDistance() <= 5) {
+  } else if (distance = checkDistance() <= 5) {
     gripBall();
   } else {
     move = checkSerial();
     if (move == 0) {
       moveStraight();
-    } else if (move == 1) {
+    } else if (move == 1 && !ballStatus) {
       moveLeft();
-    } else if (move == 2) {
+    } else if (move == 2 && !ballStatus) {
       moveRight();
-    } else if (move == 3) {
+    } else if (move == 3 && !ballStatus) {
       rotate();
     }
   }
@@ -54,7 +56,7 @@ void loop() {
 }
 
 void gripBall() {
-  Serial.println(servoGrip);
+  // Serial.println(servoGrip);
 }
 
 int checkSerial() {
@@ -79,8 +81,6 @@ int checkDistance() {
   duration = pulseIn(echoPin, HIGH);
   distance = (duration * 0.034) / 2;  
 
-  Serial.print("Distance: ");
-  Serial.println(distance);
   return distance;
 }
 
